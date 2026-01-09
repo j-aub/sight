@@ -93,7 +93,7 @@ def main() -> None:
         print(f'doing {idx}')
 
         path, payload = build_query(idx)
-        r = s.post(path, data=payload)
+        r = s.post(path, data=payload, timeout=5)
         r.raise_for_status()
         resp = r.content
         with open(f'./output/{idx}.json', 'wb') as f:
