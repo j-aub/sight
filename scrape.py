@@ -92,12 +92,15 @@ def main() -> None:
     while True:
         print(f'doing {idx}')
 
-        path, payload = build_query(idx)
-        r = s.post(path, data=payload)
-        r.raise_for_status()
-        resp = r.content
-        with open(f'./output/{idx}.json', 'wb') as f:
-            f.write(resp)
+#         path, payload = build_query(idx)
+#         r = s.post(path, data=payload)
+#         r.raise_for_status()
+#         resp = r.content
+#         with open(f'./output/{idx}.json', 'wb') as f:
+#             f.write(resp)
+        # dummy for testing
+        with open(f'./output/page/{idx}.json', 'rb') as f:
+            resp = f.read()
 
         res = msgspec.json.decode(resp, type=Response)
 
@@ -112,12 +115,12 @@ def main() -> None:
             break
 
         idx += 1
-        time.sleep(0.1)
+        # time.sleep(0.1)
 
     print('writing merged file')
     # create a merged version of the data
     data = msgspec.json.encode(list(post.values()))
-    with open('./merged.json', 'wb') as f:
+    with open('./output/merged.json', 'wb') as f:
         f.write(data)
 
     print('done')
