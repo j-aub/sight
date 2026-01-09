@@ -2,7 +2,7 @@
 set -eux
 
 # perform scrape
-# uv run scrape.py
+uv run scrape.py
 
 # commit changes
 # https://stackoverflow.com/questions/69839851/github-actions-copy-git-user-name-and-user-email-from-last-commit
