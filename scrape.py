@@ -96,7 +96,7 @@ def main() -> None:
         r = s.post(path, data=payload, timeout=5)
         r.raise_for_status()
         resp = r.content
-        with open(f'./output/{idx}.json', 'wb') as f:
+        with open(f'./output/page/{idx}.json', 'wb') as f:
             f.write(resp)
 
         res = msgspec.json.decode(resp, type=Response)
