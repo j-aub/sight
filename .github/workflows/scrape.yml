@@ -1,4 +1,7 @@
+---
 name: Scrape
+on:
+  workflow_dispatch:
 
 jobs:
   uv-example:
